@@ -28,6 +28,6 @@ if __name__ == '__main__':
     
     if args.model.startswith('yolo'):
         
-        data_dir = f"{training_data_dir}/data.yaml" if args.mode == 'train' else 'valid'
+        data_dir = f"{training_data_dir}/data.yaml" if args.mode == 'train' else f"{validation_data_dir}/data.yaml"
         
         validate(model_path=args.model, data_dir=f"{data_dir}/data.yaml")
