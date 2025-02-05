@@ -12,7 +12,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parsing arguments provided. It is needed to choose correct model weights')
     
     # add arguments
-    parser.add_argument('--model', type=str, help='Choose model version', required=True)
+    parser.add_argument('--model', type=str, choices=['yolov11x'], help='Choose model version', required=True)
     
     parser.add_argument('--version', type=str, choices=['yolov11'], help='Choose model version', required=True)
     
