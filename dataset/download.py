@@ -9,11 +9,13 @@ def download_training_dataset(download_version):
     
     py_env = os.getenv('PY_ENV')
     
+    print(py_env)
+    
     dev_location = '../Football-Player-Detection-8'
     
     colob_location = 'content/model_evaluation/Football-Player-Detection-8'
     
-    dataset_location = colob_location if py_env is not 'development' else dev_location
+    dataset_location = colob_location if py_env == 'production' else dev_location
     
     dataset = None
     # check if dataset exists alread
@@ -32,11 +34,13 @@ def download_validation_dataset(download_version):
     
     py_env = os.getenv('PY_ENV')
     
+    print(py_env)
+    
     dev_location = '../football-test-dataset-2'
     
     colob_location = 'content/model_evaluation/football-test-dataset-2'
     
-    dataset_location = colob_location if py_env is not 'development' else dev_location
+    dataset_location = colob_location if py_env == 'production' else dev_location
     
     dataset = None
     # check if dataset exists alread

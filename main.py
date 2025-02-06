@@ -2,7 +2,7 @@ import argparse
 from dotenv import load_dotenv
 from ultralytics import YOLO
 from dataset import download_training_dataset, download_validation_dataset
-from models import validate
+from models import validate, predict
 
 if __name__ == '__main__':
 
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     
     parser.add_argument('--version', type=str, choices=['yolov11', 'yolov9', 'yolov8'], help='Choose model version', required=True)
     
-    parser.add_argument('--mode', type=str, choices=['train','valid'], default='valid', help='Choose which mode of the model should be executed. Choosed related dataset', required=True)
+    parser.add_argument('--mode', type=str, choices=['train','valid', 'predict'], default='valid', help='Choose which mode of the model should be executed. Choosed related dataset', required=True)
         
     args = parser.parse_args()
     
@@ -36,4 +36,11 @@ if __name__ == '__main__':
         
         data_dir = f"{training_data_dir}" if args.mode == 'train' else f"{validation_data_dir}"
         
-        validate(model_path=args.model, data_dir=f"{data_dir}/data.yaml")
+        if args.mode == 'valid':
+        
+            validate(model_path=args.model, data_dir=f"{data_dir}/data.yaml")
+            
+        if args.mode == 'predict':
+            
+            img_dir = 'football-test-dataset-2'
+            predict(model_path=args.model, img_dir=img_dir)

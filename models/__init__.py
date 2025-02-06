@@ -1,1 +1,1 @@
-from .yolo import validate
+from .yolo import validate, predict
