@@ -12,9 +12,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parsing arguments provided. It is needed to choose correct model weights')
     
     # add arguments
-    parser.add_argument('--model', type=str, choices=['yolov11x', 'yolov10', 'yolov9e', 'yolov8x' ], help='Choose model version', required=True)
+    parser.add_argument('--model', type=str, choices=['yolov11x', 'yolov9e', 'yolov8x' ], help='Choose model version', required=True)
     
-    parser.add_argument('--version', type=str, choices=['yolov11'], help='Choose model version', required=True)
+    parser.add_argument('--version', type=str, choices=['yolov11', 'yolov9', 'yolov8'], help='Choose model version', required=True)
     
     parser.add_argument('--mode', type=str, choices=['train','valid'], default='valid', help='Choose which mode of the model should be executed. Choosed related dataset', required=True)
         
