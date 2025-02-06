@@ -7,7 +7,14 @@ def download_training_dataset(download_version):
     
     api_key = os.getenv('ROBOFLOW_API_KEY')
     
-    dataset_location = 'content/model_evaluation/Football-Player-Detection-8'
+    py_env = os.getenv('PY_ENV')
+    
+    dev_location = '../Football-Player-Detection-8'
+    
+    colob_location = 'content/model_evaluation/Football-Player-Detection-8'
+    
+    dataset_location = colob_location if py_env is not 'development' else dev_location
+    
     dataset = None
     # check if dataset exists alread
     if not os.path.exists(dataset_location):
@@ -23,7 +30,14 @@ def download_validation_dataset(download_version):
     
     api_key = os.getenv('ROBOFLOW_API_KEY')
     
-    dataset_location = 'content/model_evaluation/football-test-dataset-2'
+    py_env = os.getenv('PY_ENV')
+    
+    dev_location = '../football-test-dataset-2'
+    
+    colob_location = 'content/model_evaluation/football-test-dataset-2'
+    
+    dataset_location = colob_location if py_env is not 'development' else dev_location
+    
     dataset = None
     # check if dataset exists alread
     if not os.path.exists(dataset_location):
