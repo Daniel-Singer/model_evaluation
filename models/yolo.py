@@ -26,9 +26,13 @@ def predict(model_path, img_dir=None):
     
     # create a list of image names
     
-    imgs = Path(img_dir)
+    imgs = Path(img_dir).joinpath('valid/images')
+    
+    print(imgs)
     
     img_names = list(imgs.glob('*.jpg'))
+    
+    print(img_names)
     
     dev_path = '../trained_models/'
     
@@ -38,8 +42,10 @@ def predict(model_path, img_dir=None):
     
     model_path = f"{root_weight_path}{model_path}_football_player_detection/weights/best.pt"
     
+    
     model = YOLO(model_path)
+        
+    results = model.predict(f"{img_dir}/valid/images", save=True, show_conf=False, show_labels=False, save_txt=True)
     
-    result = model(['football-test-dataset-2/valid/images/img_0798_jpg.rf.8e7a35f3edf728b4987c0b8898fcb264.jpg'])
     
-    print(result)
+    
