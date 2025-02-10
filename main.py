@@ -40,7 +40,7 @@ if __name__ == '__main__':
         
         if args.mode == 'valid':
         
-            validate(model_path=args.model, data_dir=f"{data_dir}/data.yaml")
+            validate(model_path=args.model, data_dir=f"{data_dir}/data.yaml", dataset=args.dataset)
             
         if args.mode == 'predict':
             

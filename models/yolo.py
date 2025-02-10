@@ -4,7 +4,7 @@ from ultralytics import YOLO
 
 py_env = os.getenv('PY_ENV')
 
-def validate(model_path, data_dir=None):
+def validate(model_path, data_dir=None, dataset=None):
     
     
     dev_path = '../trained_models/'
@@ -13,7 +13,9 @@ def validate(model_path, data_dir=None):
     
     root_weight_path = dev_path if py_env == 'development' else colab_path
     
-    model_path = f"{root_weight_path}{model_path}_football_player_detection/weights/best.pt"
+    dir_name = 'football_player_detection' if dataset == 2 else 'football_player_detection_3zvbc'
+    
+    model_path = f"{root_weight_path}{model_path}_{dir_name}/weights/best.pt"
     model = YOLO(model_path)
     
     metrics = model.val(data=data_dir)
