@@ -47,5 +47,3 @@ def predict(model_path, img_dir=None):
         
     results = model.predict(f"{img_dir}/valid/images", save=True, show_conf=False, show_labels=False, save_txt=True)
     
-    
-    

@@ -17,6 +17,8 @@ if __name__ == '__main__':
     parser.add_argument('--version', type=str, choices=['yolov11', 'yolov9', 'yolov8'], help='Choose model version', required=True)
     
     parser.add_argument('--mode', type=str, choices=['train','valid', 'predict'], default='valid', help='Choose which mode of the model should be executed. Choosed related dataset', required=True)
+    
+    parser.add_argument('--dataset', type=int, choices=[2,4], default=1, help='Choose which dataset to evaluate model on')
         
     args = parser.parse_args()
     
@@ -30,7 +32,7 @@ if __name__ == '__main__':
     
     # download validation dataset
     if args.mode == 'valid':
-        validation_data_dir = download_validation_dataset(download_version=args.version)
+        validation_data_dir = download_validation_dataset(download_version=args.version, valid_dataset=args.dataset)
     
     if args.model.startswith('yolo'):
         

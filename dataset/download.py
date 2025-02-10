@@ -28,17 +28,17 @@ def download_training_dataset(download_version):
     
     return dataset_location
 
-def download_validation_dataset(download_version):
+def download_validation_dataset(download_version, valid_dataset=None):
     
     api_key = os.getenv('ROBOFLOW_API_KEY')
     
     py_env = os.getenv('PY_ENV')
     
-    print(py_env)
+    # create path string based on validation
+        
+    dev_location = f"../football-test-dataset-{valid_dataset}"
     
-    dev_location = '../football-test-dataset-2'
-    
-    colob_location = 'content/model_evaluation/football-test-dataset-2'
+    colob_location = f"content/model_evaluation/football-test-dataset-{valid_dataset}"
     
     dataset_location = colob_location if py_env == 'production' else dev_location
     
@@ -47,7 +47,7 @@ def download_validation_dataset(download_version):
     if not os.path.exists(dataset_location):
         rf = Roboflow(api_key)
         project = rf.workspace("vigorelli").project("football-test-dataset")
-        version = project.version(2)
+        version = project.version(valid_dataset)
         dataset = version.download(download_version)
         return dataset.location
     
